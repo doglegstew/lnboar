@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="" class="">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Wod Tracker</title>
+  </head>
+
+  <body>
+<link rel="stylesheet" type="text/css" href="style.css">
+    <head navbar-fixed-top>
+      <h1>WodTracker 2023</h1>
+    </head>
+
+    <div id="dateButtons">
+      <!-- Buttons will be added dynamically -->
+    </div>
+    <div id="dropdown">
+      <select name="type" id="typeSelect">
+      </select>
+    </div>
+    <div id="workout">
+      <text id='description'>Hello Athlete! Select Date and Workout
+      </text>
+      <form action="/Log">
+        <label for="notes">Notes</label><br>
+        <textarea rows="2" cols="25" placeholder="Enter notes here" type="text" id="notes" name="notes"></textarea>
+        <br>
+        <br>
+        <label id='dropdowntype' for="type">Type : </label>
+        <select id='type'>
+          <option value="Strength"> Strength</option>
+          <option value="Metcon"> Metcon</option>
+          <option value="Benchmark"> Benchmark</option>
+          <option value="Skill"> Skill</option>
+        </select>
+
+        <label for="workoutName">Workout : </label>
+        <!--  <label >Workout : </label>-->
+        <input type="text" id="workoutName" name="workout" placeholder="Enter Exercise Here">
+        <br>
+        <br>
+        <label for="score">Score:</label>
+        <input type="text" id="score" name="score" placeholder="Enter score here">
+
+        <label for="unit">Unit:</label>
+        <input type="text" list="unit" name="unit" minlength="2" style="height:1">
+        <datalist id="unit" style="height:1;overflow:hidden">
+          <option>Reps</option>
+          <option>Feet</option>
+          <option>Rounds</option>
+          <option>Lbs</option>
+          <option>Time</option>
+          <option>No Score</option>
+        </datalist>
+
+        <label for="scale">Scale:</label>
+        <select name="scale" id="scale">
+          <option value="" disabled selected>Scale</option>
+          <option value="Rx" selected>Rx</option>
+          <option value="Scaled">Scaled</option>
+          <option value="No Score">No Score</option>
+        </select><br><br>
+        <input type="checkbox" id="extra" name="extra" value="extra">
+        <label for="extra"> Check here if logging other movements</label><br>
+        <button class="button button2" type="submit" value="Submit">Log</button>
+      </form>
+      <br>
+    </div>
+    <br>
+    <div>
+      <label for="exercises">Exercises : </label>
+      <select name="exercises" id="exercises">
+        {% for exercise in exercises %}
+        <option value="{{ exercise.id }}">{{exercise.name}}</option>
+        {% endfor %}
+      </select>
+      <br>
+      <div id="PRdisplay"></div>
+      <table id="percenttable" class="center" style="width: 10%">
+        <tr>
+          <th>Percent</th>
+          <th>Weight</th>
+        </tr>
+      </table>
+      <table id="recents" class="center" style="width: 10%">
+        <tr>
+          <th>Last 10</th>
+        </tr>
+      </table>
+    </div>
+  </body>
+  
+<script src = data.js> </script>
+</html>
